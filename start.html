@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<!-- html文件會有很多標籤(tag)，會用<>包起來 -->
+
+<head>
+    <!-- <meta>標籤用來描述HTML文件(document)的元資訊(metadata)，透過<meta>可以設定很多不同類型的網頁資訊 -->
+    <!-- <meta charset>用於指定網頁所使用的編碼 -->
+    <meta charset="utf-8">
+    <!-- <title>為網頁的分頁名字 -->
+    <title>Tiis is title</title>
+    <style>
+        /*  CSS 讀取的優先順序為： inline style > id > class */
+        #diff {
+            /* # 是定義id的CSS */
+            color: red
+        }
+
+        .highlight {
+            /* . 是定義class的CSS */
+            color: blue
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h1>最大，<h6>最小; <strong>:粗體; <i>:斜體 -->
+    <h1><strong>This </strong><i>is </i>Heading</h1>
+    <h3>smaller words</h3>
+    <!-- <P>代表paragraph 為內文 -->
+    <p>hi, I'm a cat</p>
+    <!-- <ul>為unordered list 沒有順序的列點 -->
+    <ul>
+        <li>List 1</li>
+        <li>List 2</li>
+        <li>List 3</li>
+    </ul>
+    <!-- <ol>為ordered list 有順序的列點 -->
+    <ol>
+        <li>List 1</li>
+        <li>List 2</li>
+        <li>List 3</li>
+    </ol>
+    <!-- placeholder是輸入的提示訊息 -->
+    <input placeholder="請輸入東西" type="text" maxlength="30"><br>
+    <!-- "checkbox"是核取方塊，使用者勾選後可用value屬性來指定當使用者勾選此方塊時要傳送給遠端伺服器什麼值 -->
+    <input type="checkbox" name="subscribe" value="html-newsletter"> Subscribe to HTML newsletter?<br>
+    <input type="checkbox" name="subscribe" value="js-newsletter"> Subscribe to JavaScript newsletter?<br>
+    <!--"submit"是一個提交按鈕，value可設定此提交紐上的文字，預設顯示文字為提交-->
+    <input id="input" type="submit" value="送出"><br><br>
+    <!-- "file"用來讓使用者可以從本機端選擇檔案上傳，accept屬性可以限制允許上傳的檔案類型，image/*:指任何圖檔
+        mutiple則代表可一次上傳多個檔案-->
+    <input type="file" accept="image/*,.pdf" multiple><br>
+    <input type="date" value="2020-04-20" min="1930-01-01" max="today" step="10">
+
+    <!-- <a> 是標籤的屬性 (attributes)，多用於超連結 -->
+    <!-- <tag attribute='value' attribute='value' >Content</tag> -->
+    <!-- href 是一個屬性，指定一個url看連結要連去哪裡 -->
+    <!-- target是一個屬性，預設值為"_self"(不用打)是在當前的視窗直接開啟連結，"_blank"代表在新的視窗開啟連結 -->
+    <div>
+        <a href="https://www.imdb.com/title/tt10375724/" target="_blank"><img src="Pictures/IMG_0758.jpg"
+                Width="300px"></a>
+        <hr> <!-- 水平分隔線 -->
+        <a href="https://www.google.com/imghp?sbi=1">click here</a>
+        <!-- download也是一個屬性，當使用者點擊連結時，直接下載連結指向的資源，download的屬性值可以設定下載檔案的檔名，
+            如果省略屬性值則會使用原始檔名。 -->
+        <br>
+        <a href="Pictures/IMG_2201.jpg" download="new name.jpg">下載圖片</a><br>
+        <!-- 電子郵件超連結 mailto -->
+        <a href="mailto:loverainie0604520@gmail.com">連絡信箱</a>
+    </div>
+    <div>
+        <!-- <img>不需要 closing tag，跟<br>(換行)一樣 -->
+        <!-- src 也是一個屬性，Width和height單位為pixel，多半只用Width去改變圖片大小避免寬高都改而導致圖片變形 -->
+        <img src="./Pictures/IMG_2201.jpg" Width="200">
+    </div>
+    <!-- <div>沒有甚麼特別意思，作用就是做一些grouping，group一些elements (block level) -->
+    <div>
+        <h4>111</h4>
+        <p>666</p>
+    </div>
+    <!-- <span>跟<div>一樣都是用來group，只是是group一些文字 <span>為行內容器(inline level)-->
+    <p>My mother has <span class="highlight">blue</span> eyes.</p>
+    <p id="diff" class="highlight">the difference between class and id.</p>
+    <p class="highlight" style="color:brown">inline style</p>
+    <!-- dir用來設定語言文字的方向順序，rtl是從右到左(right to left)，ltr是左到右(left to right) -->
+    <p dir="rtl">This paragraph is in English but incorrectly goes right to left.</p>
+    <p dir="ltr">This paragraph is in English and correctly goes left to right.</p>
+
+    <button id="gee" onclick="gee()">hit me</button>
+    <p id="sudo"></p>
+
+    <script>
+        function gee() {
+            // var text = "hhh"
+            var text = document.getElementById("gee").innerText
+            document.getElementById("sudo").innerHTML = text
+        }
+    </script>
+</body>
+
+
+
+<!-- id屬性是讓你為元素命名的，整個頁面中的元素名稱應為獨一無二的；
+    class屬性則可將元素歸為某特定類別，通常也會有很多元素屬於同一種類別
+如果你想指定某特定單一元素的樣式，則應使用id;若有很多個元素皆有相同樣式，則可使用class -->
+<!-- id用作<a>連結的錨點(anchor)名稱。例如點擊連結<a href="#myid">會跳到<tag id="myid">元素處-->
+<!-- id也可用在JavaScript可以透過id存取該元素; 用在CSS可以用id當選擇器(selector) -->
+<!-- class用在JavaScript可以透過class存取該元素
+    也可用在CSS可以用class當選擇器(selector) -->
+
+
+</html>
