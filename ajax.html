@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <!--email欄/密碼欄/送出按鈕,按送出之後跳alert告知註冊成功或註冊失敗-->
+    <form action="">
+    電子信箱<br>
+    <input type="text" name="email" class="email">
+    <br>
+    密碼<br>
+    <input type="password" name="password" class="password">
+    <br>
+    <input type="button" value="送出" class="submit">
+    </form>  
+    <div><p class="print"></p></div>
+
+    <script>
+        // 選取 DOM
+        var submit = document.querySelector('.submit');
+        var email = document.querySelector('.email');
+        var password = document.querySelector('.password');
+        
+        // 事件監聽
+        submit.addEventListener('click', signup);
+        
+        // 函式
+        function signup(){
+          //alert('QQ'); 檢查監聽是否成功
+          var account = {}; //用來儲存使用者輸入的資訊的物件
+          account.email = email.value;
+          account.password = password.value;
+          //console.log(account); 檢查物件裡面是否有吃到資料
+          
+          var xhr = new XMLHttpRequest();
+          xhr.open('post','https://hexschool-tutorial.herokuapp.com/api/signup',true);
+          // 設定文件格式
+          xhr.setRequestHeader('Content-type','application/json');
+          // 將要傳送的物件資料轉為字串型別
+          var data = JSON.stringify(account);
+          console.log(data);
+          xhr.send(data);
+          xhr.onload = function(){
+            //將回傳的資料轉為物件來作後續運用
+            var callbackdata = JSON.parse(xhr.responseText);
+            console.log(callbackdata); 
+            document.querySelector(".print").textContent = callbackdata.message;
+            // 檢查伺服器回傳的資料
+            //重頭戲: 註冊成功與否用 alert 呈現,要用到 if else 條件式
+            var result = callbackdata.success;
+            if(result){
+              alert(callbackdata.message);      
+              //console.log(callbackdata.success);
+            } else {
+              alert(callbackdata.message);
+              //console.log(callbackdata.success);
+            }
+          }
+        }
+        </script>
+
+</body>
+</html>

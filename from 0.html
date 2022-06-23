@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 網址: https://ithelp.ithome.com.tw/articles/10233457 -->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/0.css">
+    
+</head>
+
+<body>
+    <h1 id="title1">This is Title</h1>
+    <button id="change" onclick="changetextContent()">change</button>
+    <button id="demo1">Demo 1</button>
+    <button id="demo4">Demo 4</button>
+
+    <div id="div1" onclick="al()"><p>hit me!</p></div>
+
+
+    <div class="create"><strong>title</strong><br></div>
+
+    <br>
+    <label>Do you like peas?</label>
+    <input type="checkbox"><p> </p>
+    <!-- for和id的值相同，用來增加表單元件的可點擊範圍，即點擊label的文字就會同時點了label關聯的表單元件 -->
+    <label for="emailadd">Email address: </label>
+    <input type="email" name="emailadd" id="emailadd"><p> </p>
+    <!-- 如果你不想麻煩的還要設定 for 和 id，還有另外一種簡便的方法，
+        就是將表單元件直接包在<label></label>裡面，也可以有一樣的效果 -->
+    <label class="lbl">
+        Label <input type="checkbox" name="chkbox">
+    </label>
+
+    <br>
+
+    <div>
+        <br>
+        <!-- change 選單 -->
+        <select id="teamId">
+            <option value="湖人隊">湖人隊</option>
+            <option value="公牛隊">公牛隊</option>
+            <option value="爵士隊">爵士隊</option>
+        </select>
+        <!-- 清單內容 -->
+        <ul class="list"></ul>   
+    </div> 
+    <br>
+    <!-- error 事件會在 document 或是圖片載入錯誤時觸發 -->
+    <img src="Pictures/IMG_0758.jpg" alt="not found" title="zulema" onerror="this.src='Pictures/IMG_2201.jpg'" width="200px">
+    
+
+    <div class="container">
+        <h2 id="j">九九乘法表</h2>
+    </div>
+
+    <div class="container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+
+
+
+    <!-- <script>通常都放在</body>前面 -->
+    <!-- 也可以放在<head>...</head>之間，但要注意若放在<head>裡，可能會發生先在<head>讀到了<script>
+        (因html的載入順序是由上往下，瀏覽器會先分析此HTML檔案，「由上而下」依序來讀取解析)，但<script>中
+            DOM用到的id/class卻因為還沒還沒讀到<body>而尚未定義，故導致有些動作/行為無法進行 -->
+
+    <script src="js/all.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+
+</html>
