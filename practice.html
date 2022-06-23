@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Tiis is title</title>
+</head>
+
+
+<body>
+    <button id="push">push</button>
+    <button id="pop">pop</button>
+
+    <ul id="list"></ul>
+
+</body>
+
+<script>
+    (function () {
+        // 也可以這樣寫
+        // var pushed = document.getElementById("push")
+        // pushed.addEventListener('click', pushHandler)
+        // var poped = document.getElementById("pop")
+        // poped.addEventListener('click',popHandler)
+        document.querySelector('#push').addEventListener('click', pushHandler)
+        document.querySelector('#pop').addEventListener('click', popHandler)
+
+        const list = document.querySelector('#list')
+
+        function pushHandler() {
+            list.appendChild(getNewElem(list.childNodes.length))
+            // 初始的list.childNodes.length = 0，因<ul id="list"></ul>
+        }
+
+        function popHandler() {
+            document.querySelectorAll('#list>li')[list.childNodes.length - 1].remove()
+        }
+
+        function getNewElem(text) {
+            // 新增 li
+            const elem = document.createElement('li')
+            elem.innerText = text
+
+            elem.addEventListener('click', eventHandler)
+            // elem綁定一個click會觸發的動作:eventHandler
+            return elem
+        }
+        
+        // event or e 都可以
+        function eventHandler(event) {
+            // alert(event.target.innerText)
+            // event.target為當前按下的那個elem
+            // this ??
+            // this 代表的會是「觸發事件的目標」元素，也就是event.currentTarget而不是e.target
+            // target is the element that triggered the event. (e.g., the user clicked on)
+            // currentTarget is the element that the event listener is attached to.
+            alert(this.innerText)
+
+        }
+    })()
+</script>
+
+</html>
